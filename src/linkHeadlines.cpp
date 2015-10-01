@@ -77,15 +77,18 @@ int main(int argc, char *argv[])
     	//This is where the magic is called. You can experiment with any of the commented out lines below.
 
     	//retrieve(dbr, wline, simstring::cosine, coefficient);
-    	//Recommended cosine coefficient around 0.4
-
-    	retrieve(dbr, wline, simstring::overlap, coefficient);
-    	//Recommended overlap coefficient: around
+    	Recommended cosine coefficient around 0.4
 
     	//retrieve(dbr, wline, simstring::dice, coefficient);
-    	//Recommended dice coefficient: around
+    	//Recommended overlap coefficient: around
 
-    	//Recommended exact coefficient: None. Will not work.
+    	//retrieve(dbr, wline, simstring::jaccard, coefficient);
+    	//Recommended jaccard coefficient: around 0.6 Unsuer
+
+    	//retrieve(dbr, wline, simstring::dice, coefficient);
+    	//Recommended dice coefficient: around 0.4
+
+    	//Recommended exact coefficient: None. Will not work for this case.
     }
     //std::cout << "Processed " << i << " calls with coefficient " << coefficient << std::endl;
 
