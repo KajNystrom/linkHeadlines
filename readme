@@ -1,3 +1,32 @@
-done
 
-Added #include <unistd.h> tp memory_mapped_file_posix.h
+This project matches a file of strings to strings in another file, for now.
+
+
+How to get this stuff to work.
+
+Download simstring, or just grab the source in lib/ Follow the instructions in the simstring package for compiling it for c++. I had to add
+#include <unistd.h>
+to memory_mapped_file_posix.h to get it to work. 
+
+In src/getClipNames is a Python hack that extract clip titles from
+json files. This is uses for bulk testing mostly. Noone in their right
+mind should use that stuff.
+
+src/linkHeadlines.cpp does the job. Just compile it with whatever compiler you prefer.
+This should work: "g++ linkheadlines.cpp -o linkheadlines"
+
+linkHeadlines.cpp is a bit of a mess but it does the job for now. It takes one argument that should be a float between 0 and 1. This argument is passed to the matching algorithm which is currently hardcoded to cosine. It is rather easy to switch it around.
+
+You can use something like this plus visual inspection to test it:
+./linkheadline 0.5 > cosine05 ; wc -l cosine05
+
+if you are using file input, make sure it is the same encoding or results will be suboptimal.
+
+
+Possibly, maybe recommended values per algorithm:
+cosine: 0.5     <-- Recommended
+overlap: 0.4    <-- Also good for this purpuse
+dice: 0.4
+jaccard: 0.9    <-- Giving a lot of double results/false positives. Need more investingations.
+exact: Dont use this!
+
